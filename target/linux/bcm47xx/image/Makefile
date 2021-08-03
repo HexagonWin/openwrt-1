@@ -231,17 +231,6 @@ define Device/netgear
 	IMAGE/chk := append-rootfs | trx-with-loader | netgear-chk
 endef
 
-define Device/iptime-n704bcm
-  DEVICE_VENDOR := ipTIME
-  DEVICE_MODEL := N704BCM
-  IMAGE_SIZE := 3904k
-  KERNEL_INITRAMFS := kernel-bin | trx | iptime-brcm n704bcm | \
-	pad-extra-header 128k
-  IMAGE/trx := append-rootfs | trx-without-jffs2 | iptime-brcm n704bcm | \
-	pad-rootfs | append-metadata | check-size
-endef
-TARGET_DEVICES += iptime-n704bcm
-
 #################################################
 # Subtarget devices
 #################################################

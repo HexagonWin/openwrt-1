@@ -494,4 +494,15 @@ define Device/netgear_wnr3500-v2-vc
 endef
 TARGET_DEVICES += netgear_wnr3500-v2-vc
 
+define Device/iptime-n704bcm
+  DEVICE_VENDOR := ipTIME
+  DEVICE_MODEL := N704BCM
+  IMAGE_SIZE := 3904k
+  KERNEL_INITRAMFS := kernel-bin | trx | iptime-brcm n704bcm | \
+        pad-extra-header 128k
+  IMAGE/trx := append-rootfs | trx-without-jffs2 | iptime-brcm n704bcm | \
+        pad-rootfs | append-metadata | check-size
+endef
+TARGET_DEVICES += iptime-n704bcm
+
 TARGET_DEVICES += standard standard-noloader-nodictionarylzma
